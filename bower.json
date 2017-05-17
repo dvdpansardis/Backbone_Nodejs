@@ -1,0 +1,26 @@
+{
+  "name": "backbone",
+  "description": "Client project using backbone and server\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dstatic server on nodejs",
+  "main": "\u001b[2~server.js",
+  "authors": [
+    "david pansardis (dvd.pansardis@gmail.com)"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "backbonejs"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3",
+    "backbone": "^1.3.3",
+    "backbone.marionette": "marionette#^3.3.1"
+  }
+}

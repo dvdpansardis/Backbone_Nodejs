@@ -1,0 +1,31 @@
+{
+  "name": "backbone",
+  "version": "1.0.0",
+  "description": "Client project using backbone and server\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dstatic server on nodejs",
+  "main": "\u001b[2~server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack && nodemon server.js --exec babel-node"
+  },
+  "keywords": [
+    "backbonejs"
+  ],
+  "author": "david pansardis (dvd.pansardis@gmail.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-node6": "^11.0.0"
+  },
+  "dependencies": {
+    "bower-webpack-plugin": "^0.1.9",
+    "component-webpack-plugin": "^0.2.1",
+    "connect": "^3.6.1",
+    "jquery": "^3.2.1",
+    "marionette": "0.0.0",
+    "serve-static": "^1.12.2",
+    "underscore": "^1.8.3",
+    "webpack": "2.3.2"
+  },
+  "engines": {
+    "node": "6.10.3"
+  }
+}
