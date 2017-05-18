@@ -1,32 +1,57 @@
 const path = require('path');
 const webpack = require('webpack');
-const isProd = 'production' === process.env.NODE_ENV
-const devtool = isProd ? 'hidden-source-map': 'source-map'
-const BowerResolvePlugin = require("bower-resolve-webpack-plugin");
+//const isProd = 'production' === process.env.NODE_ENV
+//const devtool = isProd ? 'hidden-source-map': 'source-map'
+const devtool = 'source-map'
 
 module.exports = {
-    entry: path.join(__dirname, 'app/main/main.js'),
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
+    entry: {
+        main: path.join(__dirname, './app/main.js'),
+        vendor: [
+            'backbone',
+            'backbone-associations',
+            'backbone.marionette',
+            'backbone.radio',
+            'backbone.stickit',
+            'jquery'
+        ]
+    },
+    plugins:[
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor']
         }),
-        new webpack.ProvidePlugin({
-            "_": "underscore"
+         new webpack.LoaderOptionsPlugin({
+            minimize: false,
+            debug: true
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            comments: false,
+            sourceMap: true
         })
     ],
-    resolve: {
-        modules: ["bower_components"],
-
-        alias:{
-            'jquery':'./bower_components/jquery/dist/jquery.js',
-            'backbone':'./bower_components/underscore/underscore.js'
-        }
-    },
     devtool: devtool,
     output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.join(__dirname, 'dist/views/js')
     },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /(node_modules|dist)/
+            }, {
+                test: /\.html/,
+                loader: 'handlebars-loader'
+            }
+        ]
+    },
+    resolve: {
+        alias: {
+            'handlebars': 'handlebars/runtime.js'
+        }
+    }
 };
