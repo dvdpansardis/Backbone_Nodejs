@@ -19,10 +19,10 @@ import co from 'co';
 const app = new Koa()
 
 render(app, {
-    root: path.join(__dirname, 'dist/views'),
-    layout: false,
+    root: path.join(__dirname, 'dist'),
+    layout: 'index',
     viewExt: 'ejs',
-    cache: true,
+    cache: false,
     debug: true
 })
 
@@ -31,7 +31,7 @@ app.context.render = co.wrap(app.context.render)
 app.
     use(serve(path.join(__dirname, 'dist')))  
     .use(async function(ctx) {
-        console.log(Chalk.blue('Render...'));
+        console.log(Chalk.red('Render main page ejs.'));
         await ctx.render('index')
     })
 

@@ -8,34 +8,24 @@ module.exports = {
     entry: {
         main: path.join(__dirname, './app/main.js'),
         vendor: [
+            'jquery',
+            'underscore',
             'backbone',
             'backbone-associations',
             'backbone.marionette',
             'backbone.radio',
-            'backbone.stickit',
-            'jquery'
+            'backbone.stickit'
         ]
     },
     plugins:[
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor']
-        }),
-         new webpack.LoaderOptionsPlugin({
-            minimize: false,
-            debug: true
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            comments: false,
-            sourceMap: true
         })
     ],
     devtool: devtool,
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'dist/views/js')
+        path: path.join(__dirname, 'dist')
     },
     module: {
         loaders: [
@@ -43,7 +33,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /(node_modules|dist)/
-            }, {
+            },{
                 test: /\.html/,
                 loader: 'handlebars-loader'
             }
