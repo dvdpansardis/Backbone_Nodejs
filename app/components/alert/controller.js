@@ -18,7 +18,7 @@ const component = new (Marionette.Object.extend({
         console.log("view antes render: ", view)
         //view.render()
         console.log("view depois render: ", view)
-        opts.show(view)
+        opts = view
         console.log("fim addComponent")
     }
 }))()
