@@ -15,6 +15,8 @@ export default View.extend({
     //Seta as regioes do proprio layout.
     regions: {
         //Este layout so tem a região home-js.
-        main: "home-js"
+        main: "home-js",
+        //Region para o component alert
+        cmp_alert: "cmp-alert"
     },
 })

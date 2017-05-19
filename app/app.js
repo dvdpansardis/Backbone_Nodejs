@@ -1,4 +1,5 @@
 import { Application } from 'backbone.marionette'
+import ComponentAlert from './components/alert/controller'
 import HomeRouter from './views/home/router'
 import LayoutView from './layout'
 
